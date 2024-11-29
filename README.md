@@ -90,3 +90,6 @@ http.createServer((req, res) => {
 - `res`: Represents the HTTP response the server sends back.
 
 The server doesn't inherently "know" what to do—it simply follows the instructions defined in the callback function. You can make the response conditional based on the request method or URL.
+
+## How to run application
+In the terminal type `node server.js` and then boom!
