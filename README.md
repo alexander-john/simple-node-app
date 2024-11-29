@@ -73,3 +73,20 @@ Hello, World!
 ### Connection is Managed
 - If the Connection: keep-alive header is present (as it typically is), the TCP connection remains open for further requests.
 - If not, the connection closes after the response.
+
+## But why did the server respond the way it did?
+
+### What Makes the Server Respond the Way It Does?
+The server’s behavior is determined by the logic you write in its code. In the example we looked at, the Node.js server responds to all requests with the same message (`Hello, World!`). This is because the logic inside the `http.createServer` callback does not differentiate between request types (e.g., GET, POST).
+
+Example logic:
+```javascript
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Hello, World!');
+});
+```
+- `req`: Represents the HTTP request the server receives (including method, URL, headers, etc.).
+- `res`: Represents the HTTP response the server sends back.
+
+The server doesn't inherently "know" what to do—it simply follows the instructions defined in the callback function. You can make the response conditional based on the request method or URL.
